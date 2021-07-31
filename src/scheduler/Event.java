@@ -4,10 +4,17 @@ import java.util.*;
 
 public class Event {
 	private String name;
-	private int time;
+	private TimeHolder[] time;
 	
-	public Event(int time, String name) {
-		this.time = time;
+	public Event(TimeHolder[] times, String name) {
+		this.time = times;
 		this.name = name;
 	}
+	
+	
+	public TimeHolder[] getTimes() {
+		return time;
+	}
 }
+
+

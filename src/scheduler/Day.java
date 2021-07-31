@@ -1,10 +1,18 @@
 package scheduler;
+import java.io.*;
+import java.util.ArrayList;
 
 public class Day {
-	private int[] array;
+	private ArrayList<Event> array;
+	
 	
 	public Day() {
-		array = new int[]{8,9,10,11,12,1,2,3,4,5};
+		array = this.array;
+	}
+	
+	public ArrayList<Event> getEvents()
+	{
+		return array;
 	}
 	
 
