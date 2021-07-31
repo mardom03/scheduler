@@ -4,9 +4,9 @@ import java.util.*;
 
 public class Week{
 	private Day[] week;
-	private Event[] events;
+	private ArrayList<Event> events;
 	
-	public Week(Event[] eventList) {
+	public Week(ArrayList<Event> eventList) {
 		week = new Day[]{new Day(), new Day(), new Day(), new Day(), new Day()};
 		events = eventList;
 	}
@@ -17,7 +17,7 @@ public class Week{
 		return week;
 	}
 	
-	public Event[] getEvents() {
+	public ArrayList<Event> getEvents() {
 		return events;
 	}
 
