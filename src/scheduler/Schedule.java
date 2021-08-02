@@ -17,7 +17,9 @@ public class Schedule {
 		//Create 2D array of schedule
 		Event[][] table = new Event[5][10];
 		for(int i = 0; i<this.classes.size(); i++) {
-			table[days.get(i)][hours.get(i)] = classes.get(i);
+			for(int j = 0; j<this.classes.get(i).getDays().length;j++) {
+			table[days.get(j)][hours.get(i)] = classes.get(i);
+		}
 		}
 		
 		//Convert table into String to return
@@ -25,7 +27,7 @@ public class Schedule {
 		String sch = "      "; sch+=String.format("%-" + spacing + "s", "Monday"); sch+=String.format("%-" + spacing + "s", "Tuesday"); sch+=String.format("%-" + spacing + "s", "Wednesday"); sch+=String.format("%-" + spacing + "s", "Thursday"); sch+=String.format("%-" + spacing + "s", "Friday"); sch+="\n";
 		String current = "";
 		for(int i = 0; i<10; i++) {
-			sch += String.format("%02d00  ", i+8);
+			sch += String.format("%02d00  ", (i+8)%12);
 			for(int j = 0; j<5; j++) {
 				try {current = table[j][i].toString();}
 				catch(Exception e) {current = "--------";}

@@ -3,17 +3,148 @@ import java.util.*;
 
 public class Main {
 	public static void main(String[] args) {
-		
+		int[] times0 = {};
 		int[] times1 = {0,1};
 		int[] times2 = {2,5};
 		int[] times3 = {5,7};
 		int[] times4 = {2,4};
-		int[] times5 = {5,9};
-		TimeHolder[] holders = {new TimeHolder(times1), new TimeHolder(times2), new TimeHolder(times3), new TimeHolder(times4), new TimeHolder(times5)};
-		Event t1 = new Event(holders, "Philosiphy");
-		Event t2 = new Event(holders, "Biogoly");
-		Event t3 = new Event(holders, "Phisics");
+		int[] times5 = {1};
+		int[] times6 = {2,6};
+		int[] days1 = {2,3,4};
+		int[] days2 = {0,1,2,3,4};
+		int[] days3 = {0,2,4};
+		int[] days4 = {1,2,3};
+		int[] days5 = {0,1,2,3};
+		int[] days6 = {2,3,4};
+		
+		Event t1 = new Event(holder1, "Philosiphy",3);
+		Event t2 = new Event(holder2, "Biogoly",5);
+		Event t3 = new Event(holder3, "Phisics",3);
+		Event t4 = new Event(holder4, "Chemistree",3);
+		Event t5 = new Event(holder5, "Computronic Psyence",3);
+		Event t6 = new Event(holder6, "Eckanomics",4);
+		
+		ArrayList<Event> courses = new ArrayList<Event>();
+		ArrayList<Integer> hours = new ArrayList<Integer>();
+		ArrayList<Integer> days = new ArrayList<Integer>();
+		ArrayList<Schedule> schedules = new ArrayList<Schedule>();
+		Scheduler s1 = new Scheduler(courses,days,hours,schedules);
+		
+		int ans = 0;
+		Scanner reply = new Scanner(System.in);
+		while(ans != -1) {
+			Event tempE = null;
+			int counter = 0;
+			String name = ("");
+			System.out.println("1. Philosiphy");
+			System.out.println("2. Biogoly");
+			System.out.println("3. Phisics");
+			System.out.println("4. Chemistree");
+			System.out.println("5. Computronic Psyence");
+			System.out.println("6. Eckanomics");
+			System.out.println("Please choose your classes (-1 to receive schedules).");
+			ans = reply.nextInt();
+			switch(ans) {
+			case 1:
+			{
+				name = ("Philosiphy");
+				tempE = t1;
+				break;
+			}
+			case 2:{
+				name = ("Biogoly");
+				tempE = t2;
+				break;
+			}
+			case 3:{
+				name = ("Phisics");
+				tempE = t3;
+				break;
+			}
+			case 4:{
+				name = ("Chemistree");
+				tempE = t4;
+				break;
+			}
+			case 5:{
+				name = ("Computronic Psyence");
+				tempE = t5;
+				break;
+			}
+			case 6:{
+				name = ("Eckanomics");
+				tempE = t6;
+				break;
+			}
+			default:{
+				break;
+			}
+			}
+			if(name.equals("")) {
+				continue;
+			}
 			
+			for(int j = 0; j<s1.getEvents().size();j++) {
+				if(s1.getEvents().get(j).toString().equals(name)) {
+					break;
+					}
+				counter++;
+			}
+			if(counter == s1.getEvents().size()) {
+					s1.getEvents().add(tempE);
+				}
+			}
+		
+		
+		if(s1.getEvents().size() == 0) {
+			System.exit(0);
+		}
+		
+		s1.genPlans(s1.getEvents().size());
+		int index = 0;
+		int increment = s1.getSchedules().size()/50;
+		System.out.println(s1.getSchedules().size());
+		
+		String move = ("");
+		Scanner reply2 = new Scanner(System.in);
+		while(!move.equals("-1")) {
+			System.out.println(s1.getSchedules().get(index).toString());
+			System.out.println("Type N to see next, and L to see last");
+			move = reply2.nextLine();
+			if(move.equals("N") || move.equals("n")) {
+				index+=increment;
+			}
+			else if(move.equals("B") || move.equals("b")) {
+				index-=increment;
+			}
+			if(index>s1.getSchedules().size()) {
+				index = 0;
+			}
+			else if(index<0) {
+				index = increment*50;
+			}
+		}
+			
+					
+			
+			
+			
+			
+				
+				
+			
+			
+			
+				
+				
+				
+				
+			}
+			
+		
+		
+		
+		/***
 		ArrayList<Event> e = new ArrayList<Event>();
 		ArrayList<Integer> h = new ArrayList<Integer>();
 		ArrayList<Integer> d = new ArrayList<Integer>();
@@ -22,6 +153,11 @@ public class Main {
 		d.add(2); d.add(1); d.add(4);
 		Schedule s1 = new Schedule(e, h, d);
 		System.out.println(s1);
+		**/
+	
+	
+	 
+		
 	}
 
-}
+
