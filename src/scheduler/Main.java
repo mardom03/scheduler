@@ -20,8 +20,8 @@ public class Main {
 		e.add(t1); e.add(t2); e.add(t3);
 		h.add(2); h.add(6); h.add(9);
 		d.add(2); d.add(1); d.add(4);
-		Schedule s1 = new Schedule(e, h, d);
-		System.out.println(s1);
+		Scheduler s1 = new Scheduler(e);
+		s1.run();
 	}
 
 }

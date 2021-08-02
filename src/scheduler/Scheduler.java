@@ -1,18 +1,49 @@
 package scheduler;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Scheduler {
 	private ArrayList<Schedule> schedules;
 	private ArrayList<Integer> hours;
 	private ArrayList<Event> classes;
 	private ArrayList<Integer> day;
+	private int eventAmt;
 
-	public Scheduler() {
-		schedules = this.schedules;
-		hours = this.hours;
-		classes = this.classes;
-		day = this.day;
+	public Scheduler(ArrayList<Event> classes) {
+		this.classes = classes;
+		this.eventAmt = classes.size();
 
+	}
+	
+	public void run() {
+		String input = "";
+		Scanner scan = new Scanner(System.in);
+		int poss = findPossibilities();
+		int div = poss/50;
+		int current = 0;
+		
+		genPlans(this.eventAmt);
+		
+		System.out.println(this.schedules.get(current));
+		System.out.println("Press enter for next schedule, type b for back, exit to exit");
+		while(true){
+			input = scan.nextLine();
+			if(input.equals("")) {
+				current = Math.abs((current+div)%poss);
+				System.out.println("Schedule " + (current/(div%poss))+1 + "\n" + this.schedules.get(current));
+			}
+			else if(input.equals("b")) {
+				current = Math.abs((current-div)%poss);
+				System.out.println("Schedule " + (current/(div%poss))+1 + "\n" + this.schedules.get(current));
+			}
+			else if(input.equals("exit")) {
+				break;
+			}
+			else {
+				System.out.println("That is not a valid input");
+			}
+			
+		}
 	}
 	
 	public ArrayList<Event> getEvents(){
