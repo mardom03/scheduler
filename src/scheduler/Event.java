@@ -16,6 +16,10 @@ public class Event {
 	public TimeHolder[] getTimes() {
 		return time;
 	}
+	
+	public String toString() {
+		return this.name;
+	}
 }
 
 
