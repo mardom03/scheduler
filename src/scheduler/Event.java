@@ -13,7 +13,7 @@ public class Event {
 		this.days = days;
 		this.name = name;
 		this.hours = hours;
-		credits = cred;
+		this.credits = cred;
 	}
 	
 	

@@ -3,8 +3,7 @@ import java.util.*;
 
 public class Main {
 	public static void main(String[] args) {
-		int[] times0 = {};
-		int[] times1 = {0,1};
+		int[] times1 = {0,2};
 		int[] times2 = {2,5};
 		int[] times3 = {5,7};
 		int[] times4 = {2,4};
@@ -17,12 +16,12 @@ public class Main {
 		int[] days5 = {0,1,2,3};
 		int[] days6 = {2,3,4};
 		
-		Event t1 = new Event(holder1, "Philosiphy",3);
-		Event t2 = new Event(holder2, "Biogoly",5);
-		Event t3 = new Event(holder3, "Phisics",3);
-		Event t4 = new Event(holder4, "Chemistree",3);
-		Event t5 = new Event(holder5, "Computronic Psyence",3);
-		Event t6 = new Event(holder6, "Eckanomics",4);
+		Event t1 = new Event(days1,times1, "Philosiphy",3);
+		Event t2 = new Event(days2,times2, "Biogoly",5);
+		Event t3 = new Event(days3, times3, "Phisics",3);
+		Event t4 = new Event(days4, times4, "Chemistree",3);
+		Event t5 = new Event(days5, times5, "Computronic Psyence",3);
+		Event t6 = new Event(days6, times6, "Eckanomics",4);
 		
 		ArrayList<Event> courses = new ArrayList<Event>();
 		ArrayList<Integer> hours = new ArrayList<Integer>();
@@ -103,6 +102,9 @@ public class Main {
 		s1.genPlans(s1.getEvents().size());
 		int index = 0;
 		int increment = s1.getSchedules().size()/50;
+		if(increment == 0) {
+			increment = 1;
+		}
 		System.out.println(s1.getSchedules().size());
 		
 		String move = ("");

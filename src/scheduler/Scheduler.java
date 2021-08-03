@@ -48,7 +48,7 @@ public class Scheduler {
 						continue;
 						}
 					schedules.add(new Schedule(classes, hours, day));
-					for(int l = 0; l<this.getEvents().get(numEvents-1).getTimes().length;l++) {
+					for(int l = 0; l<this.getEvents().get(numEvents-1).getTimes().length-1;l++) {
 						hours.remove(0);
 					
 				}
@@ -63,7 +63,7 @@ public class Scheduler {
 				for(int j = 0; j<this.getEvents().get(numEvents-1).getTimes().length;j++) {
 					hours.add(this.getEvents().get(numEvents-1).getTimes()[i]);
 				this.genPlans(numEvents-1);
-				for(int l = 0; l<this.getEvents().get(numEvents-1).getTimes().length;l++) {
+				for(int l = 0; l<this.getEvents().get(numEvents-1).getTimes().length-1;l++) {
 					hours.remove(0);
 				}
 				day.set(numEvents-1, day.get(numEvents-1)+1);
