@@ -100,7 +100,7 @@ public class Main {
 		}
 		
 		s1.genPlans(s1.getEvents().size());
-		int index = 0;
+		int index = 1;
 		int increment = s1.getSchedules().size()/50;
 		if(increment == 0) {
 			increment = 1;
@@ -110,7 +110,7 @@ public class Main {
 		String move = ("");
 		Scanner reply2 = new Scanner(System.in);
 		while(!move.equals("-1")) {
-			System.out.println(s1.getSchedules().get(index).toString());
+			System.out.println(s1.getSchedules().get(index).getHours());
 			System.out.println("Type N to see next, and L to see last");
 			move = reply2.nextLine();
 			if(move.equals("N") || move.equals("n")) {

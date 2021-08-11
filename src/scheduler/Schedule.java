@@ -6,15 +6,22 @@ public class Schedule {
 	private ArrayList<Integer> hours;
 	private ArrayList<Integer> days;
 	
-	public Schedule(ArrayList<Event> classes, ArrayList<Integer> hours, ArrayList<Integer> days) {
+	public Schedule(Scheduler s1) {
 		//hours are the indices, index 0=8am, index 1=9am, ... index 9=5pm
-		this.classes = classes;
-		this.hours = hours;
-		this.days = days;
+		this.classes = s1.getEvents();
+		this.hours = s1.getHours();
+		this.days = s1.getDays();
+	}
+	
+	public ArrayList<Integer> getHours(){
+		return hours;
 	}
 	
 	public String toString() {
 		//Create 2D array of schedule
+			
+		System.out.println(hours);
+		System.out.println(days);
 		Event[][] table = new Event[5][10];
 		for(int i = 0; i<this.classes.size(); i++) {
 			for(int j = 0; j<this.classes.get(i).getDays().length;j++) {

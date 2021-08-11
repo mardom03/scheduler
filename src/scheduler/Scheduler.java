@@ -6,6 +6,7 @@ public class Scheduler {
 	private ArrayList<Integer> hours;
 	private ArrayList<Event> classes;
 	private ArrayList<Integer> day;
+	
 
 	public Scheduler(ArrayList<Event> classes, ArrayList<Integer> day, ArrayList<Integer> hours, ArrayList<Schedule> schedules) {
 		this.schedules = schedules;
@@ -23,6 +24,14 @@ public class Scheduler {
 		return classes;
 	}
 	
+	public ArrayList<Integer> getHours(){
+		return hours;
+	}
+	
+	public ArrayList<Integer> getDays(){
+		return day;
+	}
+	
 	public int findPossibilities() {
 		int possibilities = 1;
 		int eventTimes = 0;
@@ -36,56 +45,85 @@ public class Scheduler {
 		}
 	
 	public void genPlans(int numEvents){
-		day.add(0);
 		if(numEvents == 1) {
-			for(int i = 0; i<this.getEvents().get(numEvents-1).getTimes().length;i++) {
-					for(int j = 0; j<this.getEvents().get(numEvents-1).getTimes().length;j++) {
-						hours.add(this.getEvents().get(numEvents-1).getTimes()[i]);
-					if(this.hasConflict(classes,hours,day)) {
-						for(int l = 0; l<this.getEvents().get(numEvents-1).getTimes().length;l++) {
-							hours.remove(0);
-						}
-						continue;
-						}
-					schedules.add(new Schedule(classes, hours, day));
-					for(int l = 0; l<this.getEvents().get(numEvents-1).getTimes().length-1;l++) {
-						hours.remove(0);
-					
+			for(int i : this.getEvents().get(numEvents-1).getTimes()) {
+				this.hours.add(0,i);
+				for(int j = 0; j<this.getEvents().get(numEvents-1).getDays().length;j++) {
+					this.day.add(0, this.getEvents().get(numEvents-1).getDays()[j]);
 				}
-				day.set(numEvents-1, day.get(numEvents-1)+1);
+				System.out.println(hours);
+				System.out.println(day);
+				System.out.println("1");
+				if(this.hasConflict(classes,hours,day)) {
+					System.out.println("Conflict");
+					for(int l = 0; l<this.getEvents().get(numEvents-1).getDays().length;l++) {
+						day.remove(0);
+					}
+					continue;
+					}
+				else {
+					System.out.println("We made it");
+					this.schedules.add(new Schedule(this));
+					for(int l = 0; l<this.getEvents().get(numEvents-1).getDays().length;l++) {
+						day.remove(0);	
+				}
+				}
+				hours.remove(0);
+				
 				
 			}
-			}
+			
+			
 		}
 		
 		else {
-			for(int i = 0; i<this.getEvents().get(numEvents-1).getTimes().length;i++) {
-				for(int j = 0; j<this.getEvents().get(numEvents-1).getTimes().length;j++) {
-					hours.add(this.getEvents().get(numEvents-1).getTimes()[i]);
-				this.genPlans(numEvents-1);
-				for(int l = 0; l<this.getEvents().get(numEvents-1).getTimes().length-1;l++) {
-					hours.remove(0);
-				}
-				day.set(numEvents-1, day.get(numEvents-1)+1);
+			for(int i : this.getEvents().get(numEvents-1).getTimes()) {
+				this.hours.add(0,i);
+					for(int j = 0; j<this.getEvents().get(numEvents-1).getDays().length;j++) {
+						this.day.add(0, this.getEvents().get(numEvents-1).getDays()[j]);
+					}
+					this.genPlans(numEvents-1);
+					for(int l = 0; l<this.getEvents().get(numEvents-1).getDays().length;l++) {
+						this.day.remove(0);
+					}
+					this.hours.remove(0);
+					
+					
 				
 			}
 		}
-		}
+		
+					
+				
+			
+		
+		
 		
 	}
 	
 	public boolean hasConflict(ArrayList<Event> courses, ArrayList<Integer> hours, ArrayList<Integer> days) {
+		System.out.println(hours);
+		System.out.println(days);
 		for(int j = 0; j<hours.size()-1;j++) {
-			for(int i = j+1;i<hours.size();i++) {
-				if((hours.get(j)==hours.get(i)) && (days.get(j)==days.get(i))) {
-					return true;
+		
+			for(int i = j+1;i<hours.size();i++) {		
+				
+				if(hours.get(j) == hours.get(i)) {
+					for(int x = 0; x<courses.get(j).getDays().length;x++) {
+						for(int y = x+1; y<courses.get(i).getDays().length;y++) {
+							if(courses.get(j).getDays()[x] == courses.get(i).getDays()[y]) {
+								return true;
+							}
+						}
 				}
 				
 			}
 		}
+			}
 		return false;
 	}
 
 
 
 }
+
