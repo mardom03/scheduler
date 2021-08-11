@@ -5,10 +5,10 @@ public class Main {
 	public static void main(String[] args) {
 		int[] times1 = {0,2,4,5};
 		int[] times2 = {2,5,8,9};
-		int[] times3 = {5,7,2,6};
-		int[] times4 = {2,4};
-		int[] times5 = {1};
-		int[] times6 = {2,6};
+		int[] times3 = {5,7,3,6};
+		int[] times4 = {2,4,7,9};
+		int[] times5 = {1,3,4};
+		int[] times6 = {2,6,7,8};
 		int[] times7 = {1,5,9};
 		int[] times8 = {1,4,6,8};
 		int[] times9 = {4,6,7,8,9};
@@ -134,6 +134,10 @@ public class Main {
 		if(s1.getEvents().size() == 0) {
 			System.exit(0);
 		}
+		int cred = 0;
+		for(int i = 0; i< s1.getEvents().size(); i++) {
+			cred += s1.getEvents().get(i).getCredits();
+		}
 		
 		s1.genPlans(s1.getEvents().size());
 		int index = 0;
@@ -147,6 +151,7 @@ public class Main {
 		Scanner reply2 = new Scanner(System.in);
 		while(!move.equals("-1")) {
 			System.out.println("Schedule # " + (index/increment+1));
+			System.out.println("Credits: " + cred);
 			System.out.println(s1.getSchedules().get(index).toString());
 			System.out.println("Type N to see next, and L to see last");
 			move = reply2.nextLine();
