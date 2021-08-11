@@ -91,7 +91,7 @@ public class Scheduler {
 					for(int l = 0; l<this.getEvents().get(numEvents-1).getDays().length;l++) {
 						this.day.remove(0);
 					}
-					this.hours.remove(0);
+				this.hours.remove(0);
 					
 					
 				

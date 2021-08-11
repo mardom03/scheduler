@@ -22,8 +22,8 @@ public class Schedule {
 		int counter = 0;
 		Event[][] table = new Event[5][10];
 		for(int i = 0; i<this.classes.size(); i++) {
-			for(int j = counter; j<this.classes.get(i).getDays().length;j++) {
-				table[days.get(j)][hours.get(i)] = classes.get(i);
+			for(int j = 0; j<this.classes.get(i).getDays().length;j++) {
+				table[days.get(counter)][hours.get(i)] = classes.get(i);
 				counter++;
 				
 		}
