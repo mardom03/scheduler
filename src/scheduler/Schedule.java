@@ -34,7 +34,7 @@ public class Schedule {
 		String sch = "      "; sch+=String.format("%-" + spacing + "s", "Monday"); sch+=String.format("%-" + spacing + "s", "Tuesday"); sch+=String.format("%-" + spacing + "s", "Wednesday"); sch+=String.format("%-" + spacing + "s", "Thursday"); sch+=String.format("%-" + spacing + "s", "Friday"); sch+="\n";
 		String current = "";
 		for(int i = 0; i<10; i++) {
-			sch += String.format("%02d00  ", (i+8)%12);
+			sch += String.format("%02d:00  ", (i+8));
 			for(int j = 0; j<5; j++) {
 				try {current = table[j][i].toString();}
 				catch(Exception e) {current = "--------";}

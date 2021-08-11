@@ -52,27 +52,20 @@ public class Scheduler {
 				for(int j = 0; j<this.getEvents().get(numEvents-1).getDays().length;j++) {
 					this.day.add(0, this.getEvents().get(numEvents-1).getDays()[j]);
 				}
-				System.out.println(hours);
-				System.out.println(day);
-				System.out.println("1");
-				if(this.hasConflict(classes,hours,day)) {
+				ArrayList<Event> shallowCopy = new ArrayList(classes);
+				ArrayList<Integer> shallowCopy1 = new ArrayList(hours);
+				ArrayList<Integer> shallowCopy2 = new ArrayList(day);
+				if(this.hasConflict(shallowCopy, shallowCopy1,shallowCopy2)) {
 					System.out.println("Conflict");
-					for(int l = 0; l<this.getEvents().get(numEvents-1).getDays().length;l++) {
-						day.remove(0);
-					}
-					continue;
-					}
+				}
+				
 				else {
 					
-					System.out.println("We made it");
-					ArrayList<Event> shallowCopy = new ArrayList(classes);
-					ArrayList<Integer> shallowCopy1 = new ArrayList(hours);
-					ArrayList<Integer> shallowCopy2 = new ArrayList(day);
 					this.schedules.add(new Schedule(shallowCopy, shallowCopy1, shallowCopy2));
-					for(int l = 0; l<this.getEvents().get(numEvents-1).getDays().length;l++) {
-						day.remove(0);	
 				}
-				}
+				for(int l = 0; l<this.getEvents().get(numEvents-1).getDays().length;l++) {
+					day.remove(0);	
+			}
 				hours.remove(0);
 				
 				

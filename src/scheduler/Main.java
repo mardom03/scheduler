@@ -3,9 +3,9 @@ import java.util.*;
 
 public class Main {
 	public static void main(String[] args) {
-		int[] times1 = {0,2};
-		int[] times2 = {2,5};
-		int[] times3 = {5,7};
+		int[] times1 = {0,2,4,5};
+		int[] times2 = {2,5,8,9};
+		int[] times3 = {5,7,2,6};
 		int[] times4 = {2,4};
 		int[] times5 = {1};
 		int[] times6 = {2,6};
@@ -13,14 +13,14 @@ public class Main {
 		int[] days2 = {0,1,2,3,4};
 		int[] days3 = {0,2,4};
 		int[] days4 = {1,2,3};
-		int[] days5 = {0,1,2,3};
+		int[] days5 = {0,1,2};
 		int[] days6 = {2,3,4};
 		
 		Event t1 = new Event(days1,times1, "Philosiphy",3);
 		Event t2 = new Event(days2,times2, "Biogoly",5);
 		Event t3 = new Event(days3, times3, "Phisics",3);
 		Event t4 = new Event(days4, times4, "Chemistree",3);
-		Event t5 = new Event(days5, times5, "Computronic Psyence",3);
+		Event t5 = new Event(days5, times5, "Computronics",3);
 		Event t6 = new Event(days6, times6, "Eckanomics",4);
 		
 		ArrayList<Event> courses = new ArrayList<Event>();
@@ -100,7 +100,7 @@ public class Main {
 		}
 		
 		s1.genPlans(s1.getEvents().size());
-		int index = 1;
+		int index = 0;
 		int increment = s1.getSchedules().size()/50;
 		if(increment == 0) {
 			increment = 1;
@@ -110,16 +110,17 @@ public class Main {
 		String move = ("");
 		Scanner reply2 = new Scanner(System.in);
 		while(!move.equals("-1")) {
+			System.out.println("Schedule # " + (index/increment+1));
 			System.out.println(s1.getSchedules().get(index).toString());
 			System.out.println("Type N to see next, and L to see last");
 			move = reply2.nextLine();
 			if(move.equals("N") || move.equals("n")) {
-				index+=increment;
+				index = index + increment;
 			}
-			else if(move.equals("B") || move.equals("b")) {
-				index-=increment;
+			else if(move.equals("L") || move.equals("l")) {
+				index= index - increment;
 			}
-			if(index>s1.getSchedules().size()) {
+			if(index>s1.getSchedules().size()-1) {
 				index = 0;
 			}
 			else if(index<0) {
