@@ -1,5 +1,6 @@
 package scheduler;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Scheduler {
 	private ArrayList<Schedule> schedules;
@@ -62,8 +63,12 @@ public class Scheduler {
 					continue;
 					}
 				else {
+					
 					System.out.println("We made it");
-					this.schedules.add(new Schedule(this));
+					ArrayList<Event> shallowCopy = new ArrayList(classes);
+					ArrayList<Integer> shallowCopy1 = new ArrayList(hours);
+					ArrayList<Integer> shallowCopy2 = new ArrayList(day);
+					this.schedules.add(new Schedule(shallowCopy, shallowCopy1, shallowCopy2));
 					for(int l = 0; l<this.getEvents().get(numEvents-1).getDays().length;l++) {
 						day.remove(0);	
 				}
@@ -110,7 +115,7 @@ public class Scheduler {
 				
 				if(hours.get(j) == hours.get(i)) {
 					for(int x = 0; x<courses.get(j).getDays().length;x++) {
-						for(int y = x+1; y<courses.get(i).getDays().length;y++) {
+						for(int y = 0; y<courses.get(i).getDays().length;y++) {
 							if(courses.get(j).getDays()[x] == courses.get(i).getDays()[y]) {
 								return true;
 							}

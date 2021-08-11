@@ -110,7 +110,7 @@ public class Main {
 		String move = ("");
 		Scanner reply2 = new Scanner(System.in);
 		while(!move.equals("-1")) {
-			System.out.println(s1.getSchedules().get(index).getHours());
+			System.out.println(s1.getSchedules().get(index).toString());
 			System.out.println("Type N to see next, and L to see last");
 			move = reply2.nextLine();
 			if(move.equals("N") || move.equals("n")) {
