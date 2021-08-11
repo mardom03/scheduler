@@ -151,6 +151,7 @@ public class Main {
 		Scanner reply2 = new Scanner(System.in);
 		while(!move.equals("-1")) {
 			System.out.println("Schedule # " + (index/increment+1));
+			System.out.println("index:" + index);
 			System.out.println("Credits: " + cred);
 			System.out.println(s1.getSchedules().get(index).toString());
 			System.out.println("Type N to see next, and L to see last");
