@@ -9,12 +9,20 @@ public class Main {
 		int[] times4 = {2,4};
 		int[] times5 = {1};
 		int[] times6 = {2,6};
+		int[] times7 = {1,5,9};
+		int[] times8 = {1,4,6,8};
+		int[] times9 = {4,6,7,8,9};
+		int[] times10 = {1,2,6,7};
 		int[] days1 = {2,3,4};
 		int[] days2 = {0,1,2,3,4};
 		int[] days3 = {0,2,4};
 		int[] days4 = {1,2,3};
 		int[] days5 = {0,1,2};
 		int[] days6 = {2,3,4};
+		int[] days7 = {0,2,4};
+		int[] days8 = {0,3};
+		int[] days9 = {1,2,4};
+		int[] days10 = {0,1,3,4};
 		
 		Event t1 = new Event(days1,times1, "Philosiphy",3);
 		Event t2 = new Event(days2,times2, "Biogoly",5);
@@ -22,6 +30,10 @@ public class Main {
 		Event t4 = new Event(days4, times4, "Chemistree",3);
 		Event t5 = new Event(days5, times5, "Computronics",3);
 		Event t6 = new Event(days6, times6, "Eckanomics",4);
+		Event t7 = new Event(days7, times7, "Memeology",3);
+		Event t8 = new Event(days8, times8, "Dirt Sculpting",2);
+		Event t9 = new Event(days9, times9, "Basketweaving",3);
+		Event t10 = new Event(days10, times10, "Frog Fractions",4);
 		
 		ArrayList<Event> courses = new ArrayList<Event>();
 		ArrayList<Integer> hours = new ArrayList<Integer>();
@@ -41,6 +53,10 @@ public class Main {
 			System.out.println("4. Chemistree");
 			System.out.println("5. Computronic Psyence");
 			System.out.println("6. Eckanomics");
+			System.out.println("7. Memology");
+			System.out.println("8. Dirt Sculpting");
+			System.out.println("9. Basketweaving");
+			System.out.println("10. Frog Fractions");
 			System.out.println("Please choose your classes (-1 to receive schedules).");
 			ans = reply.nextInt();
 			switch(ans) {
@@ -73,6 +89,26 @@ public class Main {
 			case 6:{
 				name = ("Eckanomics");
 				tempE = t6;
+				break;
+			}
+			case 7:{
+				name = ("Memeology");
+				tempE = t7;
+				break;
+			}
+			case 8:{
+				name = ("Dirt Sculpting");
+				tempE = t8;
+				break;
+			}
+			case 9:{
+				name = ("Basketweaving");
+				tempE = t9;
+				break;
+			}
+			case 10:{
+				name = ("Frog Fractions");
+				tempE = t10;
 				break;
 			}
 			default:{
@@ -124,7 +160,12 @@ public class Main {
 				index = 0;
 			}
 			else if(index<0) {
-				index = increment*50;
+				if(s1.getSchedules().size() >= 50) {
+					index = increment*50;
+				}
+				else {
+					index = s1.getSchedules().size()-1;
+				}
 			}
 		}
 			
