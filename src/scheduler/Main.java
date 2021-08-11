@@ -191,23 +191,6 @@ public class Main {
 				
 			}
 			
-		
-		
-		
-		/***
-		ArrayList<Event> e = new ArrayList<Event>();
-		ArrayList<Integer> h = new ArrayList<Integer>();
-		ArrayList<Integer> d = new ArrayList<Integer>();
-		e.add(t1); e.add(t2); e.add(t3);
-		h.add(2); h.add(6); h.add(9);
-		d.add(2); d.add(1); d.add(4);
-		Schedule s1 = new Schedule(e, h, d);
-		System.out.println(s1);
-		**/
 	
-	
-	 
-		
-	}
 
 

@@ -1,13 +1,13 @@
 package scheduler;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Scheduler {
 	private ArrayList<Schedule> schedules;
 	private ArrayList<Integer> hours;
 	private ArrayList<Event> classes;
 	private ArrayList<Integer> day;
-	
 
 	public Scheduler(ArrayList<Event> classes, ArrayList<Integer> day, ArrayList<Integer> hours, ArrayList<Schedule> schedules) {
 		this.schedules = schedules;
@@ -19,6 +19,7 @@ public class Scheduler {
 	
 	public ArrayList<Schedule> getSchedules(){
 		return schedules;
+
 	}
 	
 	public ArrayList<Event> getEvents(){
